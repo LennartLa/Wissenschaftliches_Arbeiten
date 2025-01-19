@@ -1,7 +1,6 @@
 #Daten einlesen
 data_1 = read.csv('titanic.csv')
 
-
 #Anrede extrahieren
 
 #Fehlen Namen? -> Nein
@@ -45,11 +44,25 @@ for (i in 1:891) {
   }
 }
 
+#Extrahiert aus der Variable „Cabin“
+##Backbord oder Steuerbord? 
+data_1$Cabin_Side = NA
+data_1$Cabin_Side = ifelse(grepl("[13579]$", data_1$Cabin), "Steuerbord", 
+                         ifelse(grepl("[02468]$", data_1$Cabin), "Backbord", NA))
 
+##Deck
+data_1$Deck = NA
+data_1$Deck = ifelse(grepl("^[A-Z]", data_1$Cabin), substr(data_1$Cabin, 1, 1), NA)
 
+##Einträge mit unbekannter Kabinennummer, d.h. „“ setzt ihr auf NA.
+data_1$Deck[is.na(data_1$Cabin) | data_1$Cabin == ""] = NA
+data_1$Cabin_Side[is.na(data_1$Cabin) | data_1$Cabin == ""] = NA
+
+#Entfern Variablen
+data_1 = subset(data_1, select = -c(PassengerId, Name, Ticket, Cabin))
 
 #Speichern des neuen Datensatzes
-write.csv2(data_1, file = "Datensatz_neu")
+write.csv2(data_1, file = "Datensatz_neu.csv")
 
 
 
