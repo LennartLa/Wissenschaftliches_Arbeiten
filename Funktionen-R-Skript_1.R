@@ -42,12 +42,112 @@ metr_desk("SibSp", table_if = FALSE)
 metr_desk("Parch", table_if = FALSE)
 metr_desk("Fare", table_if = FALSE)
 
-
 #ii
+# Funktion zur Berechnung von deskriptiven Statistiken für kategoriale Variablen
 
-#iii
+data_1 <- read.csv("titanic.csv")
 
-#iv
+# Funktion: Berechnung von deskriptiven Statistiken für eine kategoriale Variable
+analyse_kategorial <- function(data, var) {
+  # Automatische Konvertierung der Variablen zu factor, falls notwendig
+  data[[var]] <- as.factor(data[[var]])
+  
+  haeufigkeiten <- table(data[[var]])
+  relative_haeufigkeiten <- prop.table(haeufigkeiten)
+  modalwert <- names(which.max(haeufigkeiten))
+  
+  cat("\nAnalyse der Variable:", var, "\n")
+  cat("\nHäufigkeiten:\n")
+  print(haeufigkeiten)
+  
+  cat("\nRelative Häufigkeiten:\n")
+  print(relative_haeufigkeiten)
+  
+  cat("\nModalwert:\n")
+  print(modalwert)
+}
+
+# Analyse für die Variablen "Survived", "Sex", "Embarked" und "Pclass"
+analyse_kategorial(data_1, "Survived")
+analyse_kategorial(data_1, "Sex")
+analyse_kategorial(data_1, "Embarked")
+analyse_kategorial(data_1, "Pclass")
+
+
+#iii. Zusammenhang zwischen zwei kategorialen Variablen
+data_1 <- read.csv("titanic.csv")
+
+# Funktion: Berechnung von deskriptiven bivariaten Statistiken
+analyse_bivariat <- function(data, var1, var2) {
+  # Automatische Konvertierung der Variablen zu factor, falls notwendig
+  data[[var1]] <- as.factor(data[[var1]])
+  data[[var2]] <- as.factor(data[[var2]])
+  
+  kreuztabelle <- table(data[[var1]], data[[var2]])
+  relative_haeufigkeiten <- prop.table(kreuztabelle)
+  chi_quadrat_test <- chisq.test(kreuztabelle)
+  
+  cat("\nAnalyse zwischen", var1, "und", var2, ":\n")
+  cat("\nKreuztabelle:\n")
+  print(kreuztabelle)
+  
+  cat("\nRelative Häufigkeiten:\n")
+  print(relative_haeufigkeiten)
+  
+  cat("\nErgebnisse des Chi-Quadrat-Tests:\n")
+  print(chi_quadrat_test)
+}
+
+# Analyse aller Kombinationen von "Survived", "Pclass", "Sex" und "Embarked"
+analyse_bivariat(data_1, "Survived", "Pclass")
+analyse_bivariat(data_1, "Survived", "Sex")
+analyse_bivariat(data_1, "Survived", "Embarked")
+analyse_bivariat(data_1, "Pclass", "Sex")
+analyse_bivariat(data_1, "Pclass", "Embarked")
+analyse_bivariat(data_1, "Sex", "Embarked")
+
+#iv. Zusammengang zwischen einer metrischen und einer dichotomen Variablen 
+
+metr_desk <- function(temp_1) {
+  list(
+    Mittelwert = mean(temp_1, na.rm = TRUE),
+    Median = median(temp_1, na.rm = TRUE),
+    Standardabweichung = sd(temp_1, na.rm = TRUE),
+    Minimum = min(temp_1, na.rm = TRUE),
+    Maximum = max(temp_1, na.rm = TRUE),
+    Spannweite = range(temp_1, na.rm = TRUE),
+    Varianz = var(temp_1, na.rm = TRUE)
+  )
+}
+
+# Funktion: Analyse von metrischen und dichotomen Variablen
+analyse_bivariat_metrisch_dichotom <- function(data, metr_var, dichot_var) {
+  # Automatische Konvertierung der dichotomen Variable zu factor
+  data[[dichot_var]] <- as.factor(data[[dichot_var]])
+  
+  # Daten splitten basierend auf der dichotomen Variable
+  gruppe_1 <- data[[metr_var]][data[[dichot_var]] == levels(data[[dichot_var]])[1]]
+  gruppe_2 <- data[[metr_var]][data[[dichot_var]] == levels(data[[dichot_var]])[2]]
+  
+  # Berechnung der deskriptiven Statistiken mit metr_desk
+  statistik <- list(
+    Gruppe_1 = metr_desk(gruppe_1),
+    Gruppe_2 = metr_desk(gruppe_2)
+  )
+  
+  # Ausgabe der Ergebnisse
+  cat("\nAnalyse zwischen", metr_var, "und", dichot_var, ":\n")
+  cat("\nStatistiken für", levels(data[[dichot_var]])[1], ":\n")
+  print(statistik$Gruppe_1)
+  
+  cat("\nStatistiken für", levels(data[[dichot_var]])[2], ":\n")
+  print(statistik$Gruppe_2)
+}
+
+# Beispiel: Analyse von "Age" (metrisch) und "Survived" (dichotom)
+analyse_bivariat_metrisch_dichotom(data_1, "Age", "Survived")
+
+
 
 #v
 
