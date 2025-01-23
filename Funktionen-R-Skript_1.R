@@ -156,13 +156,12 @@ mosaic_plot <- function(data, var1, var2, var3) {
   #`geom_mosaic` wird verwendet, um ein Mosaikdiagramm zu erstellen, bei dem die Fläche
   # jedes Rechtecks die Häufigkeit oder das Gewicht einer Kombination von kategorialen Variablen darstellt.
   ggplot(data) +
-  # x: erste kategoriale Variable entlang der x-Achse
-  # fill: weist Farben zu, um die zweite kategoriale Variable darzustellen
-  # cond: stratifiziert die Daten nach der dritten kategorialen Variable
     geom_mosaic(aes(weight = 1, x = product(!!sym(var1)), fill = !!sym(var2), cond = !!sym(var3))) +
     theme_minimal() + # 
     labs(title = "Mosaic Plot", x = var1, fill = var2)
 } 
-
+  # x: erste kategoriale Variable entlang der x-Achse
+  # fill: weist Farben zu, um die zweite kategoriale Variable darzustellen
+  # cond: stratifiziert die Daten nach der dritten kategorialen Variable
 mosaic_plot(data_1, "Pclass", "Sex", "Embarked")
 #vi
