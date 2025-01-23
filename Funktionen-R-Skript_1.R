@@ -164,4 +164,28 @@ mosaic_plot <- function(data, var1, var2, var3) {
   # fill: weist Farben zu, um die zweite kategoriale Variable darzustellen
   # cond: stratifiziert die Daten nach der dritten kategorialen Variable
 mosaic_plot(data_1, "Pclass", "Sex", "Embarked")
+
+
+
 #vi
+# Funktion: stacked bar chart für 2 oder 3 Variablen.
+stacked_bar_chart <- function(data, var1, var2, var3 = NULL) {
+  library(ggplot2)
+  
+  # Überprüft ob eine 3. Variable als Parameter übergeben wurde
+  if (!is.null(var3)) {
+    ggplot(data, aes_string(x = var1, fill = var2)) +
+      geom_bar(position = "stack") +
+      facet_wrap(as.formula(paste("~", var3)), ncol = 2) +
+      theme_minimal() +
+      labs(title = "Stacked Bar Chart with Facets", x = var1, fill = var2)
+  } else {
+    ggplot(data, aes_string(x = var1, fill = var2)) +
+      geom_bar(position = "stack") +
+      theme_minimal() +
+      labs(title = "Stacked Bar Chart", x = var1, fill = var2)
+  } # Entweder er erstellet es eine stacked bar chart mit 2 oder mit 3 Variablen
+}
+
+# Example usage:
+stacked_bar_chart(data_1, "Pclass", "Sex", "Embarked")
