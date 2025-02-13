@@ -6,7 +6,7 @@ kreuztabelle_erstellen <- function(data, var1, var2) {
   kreuztabelle <- table(data[[var1]], data[[var2]])
   list(
     Kreuztabelle = kreuztabelle,
-    Relative_Häufigkeiten = prop.table(kreuztabelle),
+    Relative_Haeufigkeiten = prop.table(kreuztabelle),
     Chi_Quadrat_Test = chisq.test(kreuztabelle)
   )
 }
@@ -21,8 +21,8 @@ haeufigkeiten_berechnen <- function(data, var) {
   var <- as.factor(data[[var]])
   haeufigkeiten <- table(var)
   list(
-    Absolute_Häufigkeiten = haeufigkeiten,
-    Relative_Häufigkeiten = prop.table(haeufigkeiten),
+    Absolute_Haeufigkeiten = haeufigkeiten,
+    Relative_Haeufigkeiten = prop.table(haeufigkeiten),
     Modalwert = names(which.max(haeufigkeiten))
   )
 }
