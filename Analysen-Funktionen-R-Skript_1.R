@@ -211,3 +211,28 @@ analyse_bivariat_metrisch_dichotom(data_1, "SibSp", "Survived")
 # Die durchschnittliche Anzahl an Überlebenden (0,47) und nicht Überlebenden (0,55) mit Familienangehörigen
 # an Bord ist nahezu gleich. Dies deutet darauf hin, dass das Vorhandensein von Familienmitgliedern 
 # keinen starken Einfluss auf die Überlebenschancen hatte und zwischen diesen beiden Variablen keine signifikante Korrelation besteht.
+
+## Gibt es einen zusammenhang zwischen der Position der Kabine und der 
+## Ueberlebenschance ? 
+
+data_1$cabin_side_num <- ifelse(data_1$Cabin_Side == "Backbord", 1, 0)
+## Auspraegung der Kabinenseite wird vorher in Numeric umgewandelt
+## um weitere Analyse zu ermoeglichen (0 == Backbord und 1 == Steuerbord). 
+
+analyse_bivariat_metrisch_dichotom(data_1, "Cabin_Side", "Survived")
+
+ggplot(data_1, aes(x = Cabin_Side, fill = as.factor(Survived))) +
+  geom_bar(position = "dodge") +  # Position "dodge" zeigt Balken nebeneinander
+  labs(title = "Überlebensanzahl nach Kabinenseite", x = "Kabinenseite", 
+       y = "Anzahl", fill = "Überlebt") +
+  theme_minimal()
+
+## Das erstellte Balkendiagramm zeigt auf der y-Achse die absolute Haeufigkeit
+## der Passagiere. Auf der x-Achse befindet sich die Lage der Kabinen. 
+## Ein Vergleich der Position mit der Auspraegung ueberlebt ja(1) und 
+## nicht ueberlebt(0) kann aufschluss darueber geben ob welche Seite des Schiffs
+## leichter zu evakuieren war oder auch von dem Unfall schwerer betroffen. 
+## Das Diagramm liefert jedoch keine aussagekraeftige Antwort. Die fehlenden 
+## Daten sind ueberwiegen hier zudem sind die Anteile der vorhanden Kabinenseiten 
+## recht ausgeglichen. 
+
