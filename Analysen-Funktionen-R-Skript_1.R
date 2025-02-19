@@ -194,7 +194,7 @@ analyse_bivariat_metrisch_dichotom <- function(data, metr_var, dichot_var) {
 
 
 # Beispiel: Analyse von "Age" (metrisch) und "Survived" (dichotom)
-analyse_bivariat_metrisch_dichotom(data_1, "Age", "Survived")
+analyse_bivariat_metrisch_dichotom(data, "Age", "Survived")
 # Die durchschnittliche Altersdifferenz zwischen Überlebenden (28,3 Jahre) und Nicht-Überlebenden (30,8 Jahre) beträgt etwa 2-3 Jahre. 
 # Dieser Unterschied ist relativ gering und allein nicht aussagekräftig genug, um zu behaupten, 
 # dass jüngere Passagiere grundsätzlich eine höhere Überlebenschance hatten.
@@ -207,7 +207,7 @@ analyse_bivariat_metrisch_dichotom(data_1, "Age", "Survived")
 
 #------------------------------------------------------------------------------#
 
-analyse_bivariat_metrisch_dichotom(data_1, "SibSp", "Survived")
+analyse_bivariat_metrisch_dichotom(data, "SibSp", "Survived")
 # Die durchschnittliche Anzahl an Überlebenden (0,47) und nicht Überlebenden (0,55) mit Familienangehörigen
 # an Bord ist nahezu gleich. Dies deutet darauf hin, dass das Vorhandensein von Familienmitgliedern 
 # keinen starken Einfluss auf die Überlebenschancen hatte und zwischen diesen beiden Variablen keine signifikante Korrelation besteht.
@@ -215,13 +215,13 @@ analyse_bivariat_metrisch_dichotom(data_1, "SibSp", "Survived")
 ## Gibt es einen zusammenhang zwischen der Position der Kabine und der 
 ## Ueberlebenschance ? 
 
-data_1$cabin_side_num <- ifelse(data_1$Cabin_Side == "Backbord", 1, 0)
+data$cabin_side_num <- ifelse(data$Cabin_Side == "Backbord", 1, 0)
 ## Auspraegung der Kabinenseite wird vorher in Numeric umgewandelt
 ## um weitere Analyse zu ermoeglichen (0 == Backbord und 1 == Steuerbord). 
 
-analyse_bivariat_metrisch_dichotom(data_1, "Cabin_Side", "Survived")
+analyse_bivariat_metrisch_dichotom(data, "Cabin_Side", "Survived")
 
-ggplot(data_1, aes(x = Cabin_Side, fill = as.factor(Survived))) +
+ggplot(data, aes(x = Cabin_Side, fill = as.factor(Survived))) +
   geom_bar(position = "dodge") +  # Position "dodge" zeigt Balken nebeneinander
   labs(title = "Überlebensanzahl nach Kabinenseite", x = "Kabinenseite", 
        y = "Anzahl", fill = "Überlebt") +
