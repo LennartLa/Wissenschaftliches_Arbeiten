@@ -3,7 +3,7 @@
 #' 
 #' Unter jeder Funktion wurden zu gewählten Variablen eine Analyse durchgeführt
 
-
+library(ggplot2)
 
 metr_desk <- function(data, colum, table_if = FALSE) {
   # Einlesen der Daten in die Funktion
@@ -140,6 +140,26 @@ analyse_bivariat(data_1, "Pclass", "Survived")
 # in welcher Klasse sich ein Passagier befand – Reisende der 1. Klasse hatten deutlich bessere Chancen 
 # zu überleben als jene in der 3. Klasse.
 
+
+analyse_bivariat_metrisch_dichotom(data_1, "Fare", "Survived")
+ggplot(data_1, aes(x = factor(Survived), y = Fare, fill = factor(Survived))) +
+  geom_boxplot() +
+  labs(
+    title = "Ticketpreisverteilung nach Überlebensstatus",
+    x = "Überlebensstatus (0 = Nein, 1 = Ja)",
+    y = "Ticketpreis (Fare)"
+  ) +
+  theme_minimal()
+## Obiege Analyse unztersucht ob ein Zusammenhang zwischen dem Ticketpreis
+## und dem Ueberleben der Gaeste bestehen koennte. Ein hoeher Ticketpreis 
+## deutet auf hoeheren Wohlstand des Passagiers hin. Die sich daraus ergebende
+## Folgerung ist: Wohlhabende Passagiere wurden bei der Evakuierung bevorzugt. 
+## Dabei ist davon auszugehen, dass ein hoeher durschnittlicher Ticketpreis in Verbindug
+## mit Survived = "ja" diesen Zusammenhang bestaetigt.
+## Das Ergebnis liefert: Die Gaeste, die nicht ueberlebten haben einen durchschnittlich
+## geringeren Ticketpreis gezahlt: 22.12 Euro. Im Gegensatz dazu betraegt der 
+## Durchschnitt bei den Uberlebenden 48.39 Euro. Somit liegt ein Zusammenhang 
+## zwischen Uberleben und dem Ticketpreis nah. 
 
 
 
