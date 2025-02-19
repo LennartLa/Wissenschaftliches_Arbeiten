@@ -159,7 +159,8 @@ ggplot(data_1, aes(x = factor(Survived), y = Fare, fill = factor(Survived))) +
 ## Das Ergebnis liefert: Die Gaeste, die nicht ueberlebten haben einen durchschnittlich
 ## geringeren Ticketpreis gezahlt: 22.12 Euro. Im Gegensatz dazu betraegt der 
 ## Durchschnitt bei den Uberlebenden 48.39 Euro. Somit liegt ein Zusammenhang 
-## zwischen Uberleben und dem Ticketpreis nah. 
+## zwischen Ueberleben und dem Ticketpreis nah, sodass man schlussfolgern kann, dass 
+## die wohlhabenden Passagiere bevorzug worden sind. 
 
 
 
