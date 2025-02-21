@@ -150,6 +150,7 @@ ggplot(data_1, aes(x = factor(Survived), y = Fare, fill = factor(Survived))) +
     y = "Ticketpreis (Fare)"
   ) +
   theme_minimal()
+
 ## Obiege Analyse untersucht ob ein Zusammenhang zwischen dem Ticketpreis
 ## und dem Ueberleben der Gaeste bestehen koennte. Dieser Zusammenang wuerde die vorherige Analyse
 ## von Passagierklasse und ueberlebt weiter untermauern. Ein hoeher Ticketpreis 
@@ -215,11 +216,9 @@ analyse_bivariat_metrisch_dichotom(data, "SibSp", "Survived")
 
 ## Gibt es einen zusammenhang zwischen der Position der Kabine und der 
 ## Ueberlebenschance ? 
-
 data$cabin_side_num <- ifelse(data$Cabin_Side == "Backbord", 1, 0)
 ## Auspraegung der Kabinenseite wird vorher in Numeric umgewandelt
 ## um weitere Analyse zu ermoeglichen (0 == Backbord und 1 == Steuerbord). 
-
 analyse_bivariat_metrisch_dichotom(data, "Cabin_Side", "Survived")
 
 ggplot(data, aes(x = Cabin_Side, fill = as.factor(Survived))) +
@@ -236,4 +235,8 @@ ggplot(data, aes(x = Cabin_Side, fill = as.factor(Survived))) +
 ## Das Diagramm liefert jedoch keine aussagekraeftige Antwort. Die fehlenden 
 ## Daten sind ueberwiegen hier zudem sind die Anteile der vorhanden Kabinenseiten 
 ## recht ausgeglichen. 
-
+## Mit: 
+kreuztabelle_erstellen(data,"Cabin_Side","Survived")
+## Wird auf die bereits erstellte Funktion zurueckgegriffen, die unter anderem aucheinen Wert fuer den Chi-Quadrat-Test
+## liefert. Dieser gibt Aufschluss darueber wie signifikant der Unterschied von Lage ist. Der p-Wert liegt bei 0.116
+## und ist als hoch zu interpretieren. Dadurch hat die Kabinen Seite keinen großen Einfluss auf das Uberleben.
