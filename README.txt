@@ -16,6 +16,5 @@ Der zurverfügung gestellte Datensatz enthält folgende Informationen:
 - Cabine_Side: Steuerbord, Backbord, "NA" für fehlende Werte
 - Deck: A-G, "NA" für fehlende Werte
 Dieser ist unter "Datensatz_neu.csv" aufzufinden. 
-"Funktionen-R-Skript 1.R" liefert: 
-"Funktionen-R-Skript 2.R" liefert: 
+"Funktionen-R-Skript 1.R" sowie "Funktionen-R-Skript 2.R" liefert Helferfunktionen die beispielsweile 
 
