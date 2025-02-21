@@ -151,7 +151,8 @@ ggplot(data_1, aes(x = factor(Survived), y = Fare, fill = factor(Survived))) +
   ) +
   theme_minimal()
 ## Obiege Analyse untersucht ob ein Zusammenhang zwischen dem Ticketpreis
-## und dem Ueberleben der Gaeste bestehen koennte. Ein hoeher Ticketpreis 
+## und dem Ueberleben der Gaeste bestehen koennte. Dieser Zusammenang wuerde die vorherige Analyse
+## von Passagierklasse und ueberlebt weiter untermauern. Ein hoeher Ticketpreis 
 ## deutet auf hoeheren Wohlstand des Passagiers hin. Die sich daraus ergebende
 ## Folgerung ist: Wohlhabende Passagiere wurden bei der Evakuierung bevorzugt. 
 ## Dabei ist davon auszugehen, dass ein hoeher durschnittlicher Ticketpreis in Verbindug
