@@ -237,6 +237,6 @@ ggplot(data, aes(x = Cabin_Side, fill = as.factor(Survived))) +
 ## recht ausgeglichen. 
 ## Mit: 
 kreuztabelle_erstellen(data,"Cabin_Side","Survived")
-## Wird auf die bereits erstellte Funktion zurueckgegriffen, die unter anderem aucheinen Wert fuer den Chi-Quadrat-Test
-## liefert. Dieser gibt Aufschluss darueber wie signifikant der Unterschied von Lage ist. Der p-Wert liegt bei 0.116
+## Wird auf die bereits erstellte Funktion zurueckgegriffen, die unter anderem auch einen Wert fuer den Chi-Quadrat-Test
+## liefert. Dieser gibt Aufschluss darueber wie signifikant der Unterschied von der Lage ist. Der p-Wert liegt bei 0.116
 ## und ist als hoch zu interpretieren. Dadurch hat die Kabinen Seite keinen großen Einfluss auf das Uberleben.
