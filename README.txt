@@ -21,5 +21,6 @@ Variablen hinzugefügt werden:
 - Deck: A-G, "NA" für fehlende Werte
 Dieser überarbeitete Datensatz ist unter "Datensatz_neu.csv" aufzufinden. 
 "Funktionen-R-Skript 1.R" sowie "Funktionen-R-Skript 2.R" liefert Helferfunktionen die beispielsweile 
-prüfen ob eine Variable Numerisch ist. Das ist wichtig für die Analyse Funktionen. 
+prüfen ob eine Variable Numerisch ist oder als Factor umgewandelt wurde, da dies wichtig für die Analyse Funktionen ist.
+
 
