@@ -19,8 +19,14 @@ Variablen hinzugefügt werden:
 - Anrede: "Mr.", "Mrs.","Miss","Master" 
 - Cabine_Side: Steuerbord, Backbord, "NA" für fehlende Werte
 - Deck: A-G, "NA" für fehlende Werte
-Dieser überarbeitete Datensatz ist unter "Datensatz_neu.csv" aufzufinden. 
+Dabei ist zu beachten, dass die Ticketnummer gelöscht werden, die Kabinennummer in: "Cabine_Side" umgewandelt und die PassengerID entfernt wird. 
+Fehlende Werte werden durch "NA" ersetzt. Dieser überarbeitete Datensatz ist unter "Datensatz_neu.csv" aufzufinden. 
+
 "Funktionen-R-Skript 1.R" sowie "Funktionen-R-Skript 2.R" liefert Helferfunktionen die beispielsweile 
 prüfen ob eine Variable Numerisch ist oder als Factor umgewandelt wurde, da dies wichtig für die Analyse Funktionen ist.
+
+Das Skript "Analysen-Funktionen-R-Skript_1.R" liefert Analysen zu metrischen Variablen des Datensatzes, kategoriale Variablen. 
+Darunter faellt ebenfalls eine Analyse zwischen dem Zusammenhang von zwei kategorialen Variablen sowie einer metrischen und einer dichotomen
+Variable. Die Auswertung der Analyse befindet sich jeweils unter und ueber den Analysefunktionen in Kommentarform. 
 
 
